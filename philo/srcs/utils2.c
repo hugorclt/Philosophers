@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:12:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/02/24 11:55:20 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/03/01 12:19:50 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void	ft_usleep(int time, t_philo *philo)
 
 	start = get_time();
 	while ((get_time() - start) < time && !ft_is_dead(philo))
-		usleep(1);
+		usleep(50);
 }

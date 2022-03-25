@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:16:01 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/02/28 09:16:35 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:20:18 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	philo_dead_message(t_philo *philo)
 
 int	kill_philo(t_philo *philo)
 {
-	if (!philo->is_eating && get_time() - philo->var->start > philo->wdie)
+	if (get_time() - philo->var->start > philo->wdie)
 	{
 		philo_dead_message(philo);
 		pthread_mutex_unlock(&philo->var->mutex);
@@ -73,7 +73,7 @@ void	*monitor(void *var_v, int i, int nb_philo_count)
 			if (var->philos[i].count == var->amount_loop)
 			{
 				nb_philo_count++;
-				var->philos[i].count = -10000;
+				var->philos[i].count = -1;
 				if (nb_philo_count == var->nb_philo)
 				{
 					var->is_dead = 1;

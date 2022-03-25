@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:37:58 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/02/25 10:08:01 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:23:49 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ void	eat(t_philo *philo)
 {
 	display_message(philo, "is eating");
 	pthread_mutex_lock(&philo->var->mutex);
-	philo->is_eating = 1;
 	philo->last_eat = get_time() - philo->var->start;
 	philo->wdie = philo->last_eat + philo->var->t_die;
 	pthread_mutex_unlock(&philo->var->mutex);
 	ft_usleep(philo->var->t_eat, philo);
 	pthread_mutex_lock(&philo->var->mutex);
-	philo->count++;
-	philo->is_eating = 0;
+	if (philo->count > -1)
+		philo->count++;
 	pthread_mutex_unlock(&philo->var->mutex);
 	pthread_mutex_unlock(philo->rfork);
 	pthread_mutex_unlock(philo->lfork);

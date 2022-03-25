@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:29:03 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/02/28 09:11:32 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:25:14 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	init_vars(t_vars *var, char **av)
 	if (init_mutex(var))
 		return (1);
 	if (init_philo(var))
-		return (1);
+		return (free(var->fork_m), 0);
 	return (0);
 }
 
